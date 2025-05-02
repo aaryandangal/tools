@@ -3,27 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Watermark Remover Pro | Remove Watermarks from Images & Videos</title>
-    <meta name="description" content="Free online tool to remove watermarks from images and videos. AI-powered watermark removal with high quality results.">
+    <title>Watermark Remover Pro | AI-Powered Watermark Removal Tool</title>
+    <meta name="description" content="Remove watermarks from images and videos instantly with our AI-powered tool. Get clean, professional results in seconds.">
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- CSS -->
     <style>
         :root {
-            --primary: #4361ee;
-            --primary-light: #3a86ff;
-            --secondary: #3f37c9;
-            --accent: #f72585;
+            /* Color Palette */
+            --primary: #4361EE;
+            --primary-light: #4CC9F0;
+            --secondary: #3F37C9;
+            --accent: #F72585;
             --dark: #212529;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-            --light-gray: #e9ecef;
-            --shadow: 0 4px 20px rgba(0,0,0,0.1);
-            --transition: all 0.3s ease;
+            --darker: #121417;
+            --light: #F8F9FA;
+            --lighter: #FFFFFF;
+            --gray: #6C757D;
+            --light-gray: #E9ECEF;
+            
+            /* Effects */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         
         * {
@@ -33,79 +43,109 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light);
+            font-family: 'Inter', sans-serif;
             color: var(--dark);
+            background-color: var(--lighter);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.2;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
         }
         
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
-        /* Header Styles */
+        /* Header */
         header {
-            background-color: white;
-            box-shadow: var(--shadow);
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255,255,255,0.98);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            box-shadow: var(--shadow-md);
         }
         
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            height: 80px;
         }
         
         .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
         }
         
-        .logo i {
+        .logo-icon {
             font-size: 28px;
         }
         
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 30px;
         }
         
         nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
+            position: relative;
             font-weight: 500;
             transition: var(--transition);
-            position: relative;
-        }
-        
-        nav ul li a:hover {
-            color: var(--primary);
         }
         
         nav ul li a::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
             bottom: -5px;
             left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
             transition: var(--transition);
         }
         
         nav ul li a:hover::after {
             width: 100%;
+        }
+        
+        .header-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .header-cta:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
         }
         
         .mobile-menu-btn {
@@ -117,27 +157,10 @@
             cursor: pointer;
         }
         
-        .cta-button {
-            background-color: var(--primary);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        .cta-button:hover {
-            background-color: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(67,97,238,0.3);
-        }
-        
         /* Hero Section */
         .hero {
-            padding: 100px 0;
-            background: linear-gradient(135deg, rgba(67,97,238,0.1) 0%, rgba(255,255,255,1) 100%);
-            text-align: center;
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, rgba(67,97,238,0.05) 0%, rgba(255,255,255,1) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -145,39 +168,24 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 300px;
-            height: 300px;
-            background-color: rgba(67,97,238,0.05);
-            border-radius: 50%;
-            z-index: 0;
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 400px;
-            height: 400px;
-            background-color: rgba(67,97,238,0.05);
-            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(76,201,240,0.1) 0%, rgba(76,201,240,0) 70%);
             z-index: 0;
         }
         
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
             position: relative;
             z-index: 1;
+            max-width: 600px;
         }
         
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
-            color: var(--dark);
-            line-height: 1.2;
+            color: var(--darker);
         }
         
         .hero p {
@@ -189,19 +197,17 @@
         .hero-buttons {
             display: flex;
             gap: 15px;
-            justify-content: center;
             margin-top: 30px;
         }
         
         .btn {
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: var(--transition);
         }
         
         .btn-primary {
@@ -211,8 +217,8 @@
         
         .btn-primary:hover {
             background-color: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(67,97,238,0.3);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
         }
         
         .btn-secondary {
@@ -224,23 +230,34 @@
         .btn-secondary:hover {
             background-color: var(--primary-light);
             color: white;
-            transform: translateY(-2px);
+            border-color: var(--primary-light);
+            transform: translateY(-3px);
+        }
+        
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50%;
+            max-width: 600px;
+            z-index: 0;
         }
         
         /* Features Section */
         .features {
-            padding: 80px 0;
+            padding: 100px 0;
             background-color: white;
         }
         
         .section-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
         
         .section-header h2 {
-            font-size: 2.2rem;
-            color: var(--dark);
+            font-size: 2.5rem;
+            color: var(--darker);
             margin-bottom: 15px;
         }
         
@@ -248,6 +265,7 @@
             color: var(--gray);
             max-width: 700px;
             margin: 0 auto;
+            font-size: 1.1rem;
         }
         
         .features-grid {
@@ -257,14 +275,18 @@
         }
         
         .feature-card {
-            background-color: var(--light);
-            border-radius: 10px;
-            padding: 30px;
+            background-color: var(--lighter);
+            border-radius: 12px;
+            padding: 40px 30px;
             transition: var(--transition);
-            text-align: center;
             position: relative;
             overflow: hidden;
-            z-index: 1;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
         }
         
         .feature-card::before {
@@ -272,22 +294,14 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 5px;
-            background-color: var(--primary);
-            transform: scaleX(0);
-            transform-origin: left;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
             transition: var(--transition);
-            z-index: -1;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow);
         }
         
         .feature-card:hover::before {
-            transform: scaleX(1);
+            height: 100%;
         }
         
         .feature-icon {
@@ -299,64 +313,74 @@
         .feature-card h3 {
             font-size: 1.3rem;
             margin-bottom: 15px;
-            color: var(--dark);
         }
         
         .feature-card p {
             color: var(--gray);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .feature-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
             display: inline-flex;
             align-items: center;
             gap: 5px;
+            color: var(--primary);
+            font-weight: 500;
             transition: var(--transition);
         }
         
         .feature-link:hover {
-            color: var(--secondary);
             gap: 8px;
+            color: var(--secondary);
         }
         
         /* How It Works Section */
         .how-it-works {
-            padding: 80px 0;
+            padding: 100px 0;
             background-color: var(--light);
+            position: relative;
+        }
+        
+        .how-it-works::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: white;
+            z-index: 0;
         }
         
         .steps {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
             gap: 30px;
-            margin-top: 50px;
+            position: relative;
+            z-index: 1;
         }
         
         .step {
             flex: 1;
-            min-width: 250px;
-            max-width: 300px;
-            text-align: center;
-            position: relative;
-            padding: 30px;
+            max-width: 350px;
             background-color: white;
-            border-radius: 10px;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow-md);
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
         
         .step:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
         }
         
         .step-number {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
             border-radius: 50%;
             display: flex;
@@ -364,38 +388,82 @@
             justify-content: center;
             font-size: 1.5rem;
             font-weight: bold;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
         }
         
         .step h3 {
+            text-align: center;
             margin-bottom: 15px;
-            color: var(--dark);
+            font-size: 1.3rem;
         }
         
         .step p {
+            text-align: center;
             color: var(--gray);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .step-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            display: inline-flex;
+            display: flex;
+            justify-content: center;
             align-items: center;
             gap: 5px;
+            color: var(--primary);
+            font-weight: 500;
             transition: var(--transition);
         }
         
         .step-link:hover {
-            color: var(--secondary);
             gap: 8px;
+            color: var(--secondary);
+        }
+        
+        /* Tool Preview Section */
+        .tool-preview {
+            padding: 100px 0;
+            background-color: white;
+            position: relative;
+        }
+        
+        .tool-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .tool-content {
+            flex: 1;
+        }
+        
+        .tool-image {
+            flex: 1;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .tool-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .tool-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(67,97,238,0.2) 0%, rgba(67,97,238,0) 100%);
+            z-index: 1;
         }
         
         /* CTA Section */
         .cta-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             text-align: center;
             position: relative;
@@ -405,13 +473,11 @@
         .cta-section::before {
             content: '';
             position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            z-index: 0;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
         }
         
         .cta-section::after {
@@ -421,71 +487,39 @@
             left: -100px;
             width: 300px;
             height: 300px;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            z-index: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
         }
         
         .cta-content {
             position: relative;
             z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .cta-section h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
         }
         
         .cta-section p {
-            max-width: 700px;
-            margin: 0 auto 30px;
+            font-size: 1.2rem;
             opacity: 0.9;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-        
-        /* File Upload Section - REPLACE THIS WITH YOUR TOOL LINK */
-        .file-upload-section {
-            padding: 80px 0;
-            background-color: white;
-            text-align: center;
-        }
-        
-        .file-upload-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px;
-            background-color: var(--light);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-        
-        .file-upload-container h2 {
-            margin-bottom: 20px;
-            color: var(--dark);
-        }
-        
-        .file-upload-container p {
-            color: var(--gray);
             margin-bottom: 30px;
         }
         
         /* Footer */
         footer {
-            background-color: var(--dark);
+            background-color: var(--darker);
             color: white;
-            padding: 60px 0 20px;
+            padding: 80px 0 30px;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
         
         .footer-column h3 {
@@ -498,11 +532,11 @@
         .footer-column h3::after {
             content: '';
             position: absolute;
+            bottom: 0;
+            left: 0;
             width: 40px;
             height: 2px;
             background-color: var(--primary);
-            bottom: 0;
-            left: 0;
         }
         
         .footer-column ul {
@@ -510,12 +544,11 @@
         }
         
         .footer-column ul li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .footer-column ul li a {
-            color: #ddd;
-            text-decoration: none;
+            color: rgba(255,255,255,0.7);
             transition: var(--transition);
         }
         
@@ -531,13 +564,19 @@
         }
         
         .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
             color: white;
-            font-size: 1.2rem;
             transition: var(--transition);
         }
         
         .social-links a:hover {
-            color: var(--primary);
+            background-color: var(--primary);
             transform: translateY(-3px);
         }
         
@@ -547,28 +586,88 @@
         
         .newsletter-form input {
             width: 100%;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 12px 15px;
+            border-radius: 8px;
             border: none;
             margin-bottom: 10px;
+            font-family: inherit;
+        }
+        
+        .newsletter-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter-form button:hover {
+            background-color: var(--secondary);
         }
         
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            color: #aaa;
+            color: rgba(255,255,255,0.6);
             font-size: 0.9rem;
         }
         
-        /* Responsive Adjustments */
-        @media (max-width: 992px) {
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
             .hero h1 {
-                font-size: 2.4rem;
+                font-size: 3rem;
             }
             
-            .section-header h2 {
-                font-size: 2rem;
+            .hero-image {
+                opacity: 0.5;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero {
+                padding: 150px 0 80px;
+                text-align: center;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
+            
+            .hero-image {
+                position: relative;
+                top: auto;
+                right: auto;
+                transform: none;
+                width: 100%;
+                max-width: 500px;
+                margin: 40px auto 0;
+                opacity: 1;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .tool-container {
+                flex-direction: column;
+            }
+            
+            .tool-content {
+                text-align: center;
+            }
+            
+            .steps {
+                flex-wrap: wrap;
+            }
+            
+            .step {
+                max-width: 100%;
+                min-width: 300px;
             }
         }
         
@@ -583,11 +682,11 @@
                 left: 0;
                 width: 100%;
                 background-color: white;
-                box-shadow: var(--shadow);
                 padding: 20px;
+                box-shadow: var(--shadow-md);
                 transform: translateY(-150%);
                 transition: var(--transition);
-                z-index: 99;
+                z-index: 999;
             }
             
             nav.active {
@@ -599,60 +698,65 @@
                 gap: 15px;
             }
             
-            .header-container {
-                padding: 15px;
-            }
-            
-            .hero {
-                padding: 80px 0;
+            .header-cta {
+                display: none;
             }
             
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             .hero p {
                 font-size: 1.1rem;
             }
             
-            .hero-buttons, .cta-buttons {
-                flex-direction: column;
-                align-items: center;
+            .section-header h2 {
+                font-size: 2rem;
             }
             
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
-                justify-content: center;
+            .cta-section h2 {
+                font-size: 2rem;
             }
         }
         
         @media (max-width: 576px) {
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
             }
             
             .section-header h2 {
                 font-size: 1.8rem;
             }
             
-            .feature-card, .step {
-                padding: 20px;
+            .feature-card {
+                padding: 30px 20px;
             }
             
-            .file-upload-container {
-                padding: 20px;
+            .cta-section {
+                padding: 80px 0;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="mainHeader">
         <div class="container header-container">
             <a href="index.html" class="logo">
-                <i class="fas fa-water"></i>
+                <i class="fas fa-water logo-icon"></i>
                 Watermark Remover Pro
             </a>
             
@@ -671,22 +775,31 @@
                 </ul>
             </nav>
             
-            <a href="tool.html" class="cta-button">Remove Watermark Now</a>
+            <a href="tool.html" class="header-cta">
+                <i class="fas fa-play-circle"></i> Try Now
+            </a>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container hero-content">
-            <h1>Remove Watermarks from Images & Videos in Seconds</h1>
-            <p>Our AI-powered tool helps you easily remove unwanted watermarks from your photos and videos while preserving quality.</p>
-            <div class="hero-buttons">
-                <a href="tool.html" class="btn btn-primary">
-                    <i class="fas fa-play-circle"></i> Try It Now - Free
-                </a>
-                <a href="how-it-works.html" class="btn btn-secondary">
-                    <i class="fas fa-info-circle"></i> Learn How It Works
-                </a>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Remove Watermarks Instantly with AI</h1>
+                <p>Our advanced algorithm removes watermarks from images and videos while preserving quality. Get clean results in seconds.</p>
+                <div class="hero-buttons">
+                    <a href="tool.html" class="btn btn-primary">
+                        <i class="fas fa-play-circle"></i> Try It Free
+                    </a>
+                    <a href="how-it-works.html" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i> Learn More
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Replace with your actual hero image -->
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/600x400" alt="Watermark Remover Interface Preview">
             </div>
         </div>
     </section>
@@ -696,35 +809,38 @@
         <div class="container">
             <div class="section-header">
                 <h2>Why Choose Our Watermark Remover</h2>
-                <p>Experience the most advanced watermark removal technology available online</p>
+                <p>Experience the most advanced watermark removal technology with these powerful features</p>
             </div>
+            
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <h3>Lightning Fast</h3>
-                    <p>Remove watermarks in seconds with our optimized processing algorithms that work directly in your browser.</p>
+                    <h3>Lightning Fast Processing</h3>
+                    <p>Remove watermarks in seconds with our optimized algorithms that work directly in your browser.</p>
                     <a href="how-it-works.html#speed" class="feature-link">
-                        Read more <i class="fas fa-arrow-right"></i>
+                        Learn more <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+                
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-lock"></i>
                     </div>
-                    <h3>100% Private</h3>
-                    <p>Your files never leave your device. All processing happens locally for maximum privacy and security.</p>
+                    <h3>Complete Privacy</h3>
+                    <p>Your files never leave your device. All processing happens locally for maximum security.</p>
                     <a href="privacy.html" class="feature-link">
                         Privacy policy <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+                
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-gem"></i>
+                        <i class="fas fa-magic"></i>
                     </div>
-                    <h3>High Quality</h3>
-                    <p>Advanced AI reconstruction ensures your images look natural after watermark removal.</p>
+                    <h3>AI-Powered Quality</h3>
+                    <p>Advanced reconstruction ensures your images look completely natural after removal.</p>
                     <a href="examples.html" class="feature-link">
                         See examples <i class="fas fa-arrow-right"></i>
                     </a>
@@ -734,33 +850,36 @@
     </section>
 
     <!-- How It Works Section -->
-    <section class="how-it-works" id="how-it-works">
+    <section class="how-it-works">
         <div class="container">
             <div class="section-header">
                 <h2>How It Works</h2>
                 <p>Remove watermarks in just three simple steps</p>
             </div>
+            
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Upload Your File</h3>
-                    <p>Drag and drop your image or video file into our tool. We support JPG, PNG, and MP4 formats.</p>
+                    <p>Drag and drop your image or video into our tool. We support JPG, PNG, and MP4 formats.</p>
                     <a href="supported-formats.html" class="step-link">
                         Supported formats <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+                
                 <div class="step">
                     <div class="step-number">2</div>
                     <h3>Select Watermark Area</h3>
-                    <p>Use our smart selection tools to mark the watermark area you want to remove.</p>
+                    <p>Use our smart selection tools to mark exactly what you want to remove.</p>
                     <a href="selection-tools.html" class="step-link">
                         About tools <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+                
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Download Result</h3>
-                    <p>Get your clean image or video without watermarks in just seconds.</p>
+                    <h3>Download Clean Result</h3>
+                    <p>Get your watermark-free file in seconds, ready to use anywhere.</p>
                     <a href="download-options.html" class="step-link">
                         Download options <i class="fas fa-arrow-right"></i>
                     </a>
@@ -768,31 +887,35 @@
             </div>
         </div>
     </section>
-<!-- File Upload Section - Directs to img-watermark.html -->
-<section class="file-upload-section">
-    <div class="container">
-        <div class="file-upload-container">
-            <h2>Ready to Remove Watermarks?</h2>
-            <p>Try our powerful watermark remover tool now. Upload your file and get clean results in seconds.</p>
-            
-            <!-- Updated button to redirect to actual tool page -->
-            <a href="img-watermark.html" class="btn btn-primary" style="display: inline-flex; align-items: center;">
-                <i class="fas fa-upload"></i> Go to Watermark Remover Tool
-            </a>
+
+    <!-- Tool Preview Section -->
+    <section class="tool-preview">
+        <div class="container">
+            <div class="tool-container">
+                <div class="tool-content">
+                    <h2>Powerful Watermark Removal Tool</h2>
+                    <p>Our intuitive interface makes it easy to remove watermarks from any image or video. Just upload, select, and download your clean file.</p>
+                    <a href="tool.html" class="btn btn-primary" style="margin-top: 20px;">
+                        <i class="fas fa-play-circle"></i> Try the Tool Now
+                    </a>
+                </div>
+                
+                <!-- Replace with your actual tool screenshot -->
+                <div class="tool-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Watermark Remover Tool Interface">
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="container cta-content">
-            <h2>Join Thousands of Satisfied Users</h2>
-            <p>Start removing watermarks from your images and videos today - no registration required!</p>
-            <div class="cta-buttons">
-                <a href="tool.html" class="btn btn-primary" style="background-color: white; color: var(--primary);">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Remove Watermarks?</h2>
+                <p>Join thousands of satisfied users who have removed watermarks with our tool. No registration required.</p>
+                <a href="tool.html" class="btn btn-primary" style="background-color: white; color: var(--primary); margin-top: 20px;">
                     <i class="fas fa-play-circle"></i> Start Now - It's Free
-                </a>
-                <a href="pricing.html" class="btn btn-secondary" style="color: white; border-color: white;">
-                    <i class="fas fa-crown"></i> See Premium Features
                 </a>
             </div>
         </div>
@@ -812,6 +935,7 @@
                         <a href="https://youtube.com/yourchannel" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
+                
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
@@ -822,6 +946,7 @@
                         <li><a href="blog.html">Blog</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-column">
                     <h3>Support</h3>
                     <ul>
@@ -831,19 +956,19 @@
                         <li><a href="terms.html">Terms of Service</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-column">
                     <h3>Newsletter</h3>
                     <p>Subscribe to get tips and updates about our tool.</p>
                     <form class="newsletter-form" action="https://yourwebsite.com/subscribe" method="POST">
                         <input type="email" name="email" placeholder="Your email address" required>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe</button>
+                        <button type="submit">Subscribe</button>
                     </form>
                 </div>
             </div>
+            
             <div class="copyright">
-                <p>&copy; <span id="currentYear"></span> Watermark Remover Pro. All rights reserved. | 
-                <a href="privacy.html" style="color: #aaa;">Privacy Policy</a> | 
-                <a href="terms.html" style="color: #aaa;">Terms of Service</a></p>
+                <p>&copy; <span id="currentYear"></span> Watermark Remover Pro. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -862,13 +987,37 @@
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
         
+        // Header scroll effect
+        const header = document.getElementById('mainHeader');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
             });
         });
     </script>
